@@ -6,11 +6,19 @@
 class Message {
 public:
     static std::string Viteza(const std::string& viteza) {
-        return "[VITEZA]" + viteza;
+        return "[VITEZA] " + viteza;
+    }
+
+    static std::string Strada(const std::string& str) {
+        return "[STRADA] " + str;
     }
 
     static std::string Accident(const std::string& locatie) {
-        return "[ACCIDENT]" + locatie;
+        return "[ACCIDENT] " + locatie;
+    }
+
+    static std::string Trafic(const std::string& locatie) {
+        return "[TRAFIC] " + locatie;
     }
 
     static std::string AbonareVreme() {
@@ -38,6 +46,6 @@ public:
     }
 
     static std::string Chat(const std::string& mesaj) {
-        return "[CHAT]" + mesaj;
+        return "[CHAT] " + mesaj;
     }
 };

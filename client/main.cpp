@@ -4,32 +4,6 @@
 
 
 int main(int argc, char** argv) {
-    // if(argc != 3) {
-    //     printf("Introdu ip si porul\n");
-    //     return -1;
-    // }
-    // Client client;
-    // int port = atoi(argv[2]);
-    // auto r = client.bind_connection(argv[1], port);
-    // if(r.is_err()) {
-    //     log_error(r.unwrap_err().c_str());
-    //     return -1;
-    // }
-
-    // auto r1 = client.write_full(Message::Accident("Strada Lapusneanu Nr 12"));
-    // if(r1.is_err()) {
-    //     log_error(r1.unwrap_err().c_str());
-    //     return -1;
-    // }
-
-    // auto r2 = client.read_full();
-    // if(r2.is_err()) {
-    //     log_error(r2.unwrap_err().c_str());
-    //     return -1;
-    // }
-    // printf("Mesaj primit: %s\n", r2.unwrap().c_str());
-
-    // client.close_connection();
     if (argc != 3) {
         printf("Introdu ip si porul\n");
         return -1;
@@ -40,8 +14,7 @@ int main(int argc, char** argv) {
         printf("%s\n", r.unwrap_err().c_str());
         return -1;
     }
-    log_message("%s", "Conectat cu succes!");
-    app.create(1000, 800, "Window");
+    app.create(800, 400, "Window");
     app.run();
 
     return 0;

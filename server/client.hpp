@@ -19,6 +19,12 @@
 class Client {
 public:
     int32_t cl;
+    bool abonare_vreme = false;
+    bool abonare_sport = false;
+    bool abonare_combustibil = false;
+    int viteza = 0;
+    std::string strada = "";
+
     void bind_connection(int32_t client) {
         cl = client;
     }

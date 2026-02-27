@@ -23,6 +23,7 @@ public:
     struct sockaddr_in server;
     int port;
     std::string ip_server;
+
     Result<bool, std::string> bind_connection(const char* adress, int p) {
         ip_server = adress;
         port = p;
@@ -41,24 +42,9 @@ public:
         return Result<bool, std::string>::ok(true);
     }
     void close_connection() {
+        auto a = write_full("[EXIT]");
         close(cl);
     }
-    void trimite_mesaj(const std::string msg) {
-        auto r1 = write_full(msg);
-        if (r1.is_err()) {
-            log_error(r1.unwrap_err().c_str());
-            return;
-        }
-
-        auto r2 = read_full();
-        if (r2.is_err()) {
-            log_error(r2.unwrap_err().c_str());
-            return;
-        }
-        log_message("Mesaj primit: %s\n", r2.unwrap().c_str());
-    }
-
-
 
     Result<uint32_t, std::string> read_len() {
         typedef Result<uint32_t, std::string> Res;

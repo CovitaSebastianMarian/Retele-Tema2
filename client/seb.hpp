@@ -30,6 +30,7 @@ private:
 };
 
 std::string log_buffer;
+unsigned int nr_linii = 0;
 
 // #define log_error(x) \
 //     do { \
@@ -56,10 +57,21 @@ std::string log_buffer;
         char buffer[1024]; \
         snprintf(buffer, sizeof(buffer), fmt, __VA_ARGS__); \
         std::ostringstream oss; \
-        oss << "[SERVER LOG]\n" << buffer << "\n"; \
+        oss << buffer << "\n"; \
         log_buffer += oss.str(); \
+        nr_linii++;              \
+        while (nr_linii > 40) {                                        \
+            size_t pos = log_buffer.find('\n');                    \
+            if (pos != std::string::npos) {                             \
+                log_buffer.erase(0, pos + 1);                \
+                nr_linii--;                                             \
+            } else {                                                    \
+                log_buffer.clear();                                     \
+                nr_linii = 0;                                           \
+            }                                                           \
+        }                                                               \
         printf("\033[34m%s\033[0m\n", oss.str().c_str()); \
-    } while(0)
+    } while (0)
 
 
 
